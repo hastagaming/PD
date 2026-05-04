@@ -26,25 +26,6 @@ PD_Project/
 └── scripts/              # Automation & Injection Scripts (Bash/Bootstrap)
 
 ```
-## 🛠️ Build Instructions
-### 1. Prerequisites
- * Android SDK & NDK (API 26+)
- * Rust Toolchain (Target: aarch64-linux-android)
- * OpenJDK 17
-### 2. Compile Backend (Rust)
-```bash
-cd core
-cargo ndk -t aarch64-linux-android build --release
-cp target/aarch64-linux-android/release/pd-daemon ../android/app/src/main/assets/bin/
-
-```
-### 3. Build Signed APK (Android)
-```bash
-cd android
-chmod +x gradlew
-./gradlew assembleRelease
-
-```
 ## 🤖 How to Use
  1. **Initialization**: Launch the app and wait for the bootstrap.sh to initialize the core environment.
  2. **Select Distro**: Tap **"Pick ISO"** and select your Linux distro file from your local storage.
