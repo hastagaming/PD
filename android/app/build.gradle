@@ -21,12 +21,25 @@ android {
         viewBinding = true
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+    signingConfigs {
+        create("release") {
+            // Gunakan file yang baru saja dibuat
+            storeFile = file("pd-project.jks")
+            // Gunakan System.getenv agar GitHub Actions bisa mengisi password secara otomatis
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "PASSWORD_LOKAL_KAMU"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "pd_alias"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "PASSWORD_LOKAL_KAMU"
         }
     }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro
+        }
+    }
+}
     
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
