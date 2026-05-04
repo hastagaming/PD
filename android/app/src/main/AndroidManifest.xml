@@ -23,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+	<activity android:name=".BusyBoxActivity"
+		  android:exported="false" />
+	<activity android:name=".TerminalActivity"
+		  android:exported="false" />
 
         <service
             android:name=".TerminalService"
