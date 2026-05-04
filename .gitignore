@@ -12,6 +12,12 @@ captures/
 .cxx/
 *.apk
 *.keystore
+*.properties
+local.properties
+.gradle
+build/
+*.jks
+*.base64
 
 # PD Specific
 daemon.log
