@@ -1,0 +1,11 @@
+# Default profile for PD Distro
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export HOME=/root
+export USER=root
+export PS1='\[\e[1;32m\]PD-Terminal \[\e[1;34m\]\w \$ \[\e[0m\]'
+
+alias ls='ls --color=auto'
+alias ll='ls -lah'
+
+echo "Welcome Commander Nasa."
+echo "PD System initialized with ADB privilege."
