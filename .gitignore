@@ -12,7 +12,7 @@ captures/
 .cxx/
 *.apk
 *.keystore
-*.properties
+# *.properties
 local.properties
 .gradle
 build/
