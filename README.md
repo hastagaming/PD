@@ -50,14 +50,6 @@ chmod +x gradlew
  2. **Select Distro**: Tap **"Pick ISO"** and select your Linux distro file from your local storage.
  3. **Auto-Setup**: The system intelligently scans the architecture and fetches the specific BusyBox binary required from busybox.net.
  4. **Launch**: Hit **"OK"** to enter the Terminal or switch to **GUI Mode** for a full desktop experience.
-## 🔑 CI/CD & Signing (GitHub Actions)
-To enable automated signed builds, configure the following **Secrets** in your GitHub repository settings:
-| Secret Name | Description |
-|---|---|
-| KEYSTORE_BASE64 | Your .jks file converted to Base64 string (base64 pd-project.jks | tr -d '\n') |
-| KEYSTORE_PASSWORD | The password for your keystore file |
-| KEY_ALIAS | The alias for your signing key (e.g., pd_alias) |
-| KEY_PASSWORD | The password for the specific key alias |
 ## 👨‍💻 Developer
  * **Commander/Lead Developer**: Nasa
  * **Target Device**: Realme Note 50 (Android 15)
