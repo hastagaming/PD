@@ -1,28 +1,37 @@
 package com.pd.app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 
-class TerminalActivity : AppCompatActivity() {
+class SetupActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        val bootScript = File(filesDir, "scripts/boot.sh")
-        if (bootScript.exists()) {
-            // Eksekusi terminal logic di sini
+        // Jika ada layout, gunakan: setContentView(R.layout.activity_setup)
+    }
+
+    // Fungsi baru untuk memproses ISO yang dipilih Komandan
+    private fun processSelectedIso(file: File) {
+        // Pastikan class DistroScanner sudah Komandan buat di file terpisah
+        val scanner = DistroScanner() 
+        val busyboxUrl = scanner.getCompatibleBusyBox(file)
+
+        // Sistem otomatis memilihkan BusyBox untuk user dan berpindah Activity
+        val intent = Intent(this, BusyBoxActivity::class.java).apply {
+            putExtra("BUSYBOX_URL", busyboxUrl)
+            putExtra("ISO_PATH", file.absolutePath)
         }
+        startActivity(intent)
     }
-}
-// Inside SetupActivity.kt
-private fun processSelectedIso(file: File) {
-    val scanner = DistroScanner()
-    val busyboxUrl = scanner.getCompatibleBusyBox(file)
-    
-    // System automatically chooses for the user
-    val intent = Intent(this, BusyBoxActivity::class.java).apply {
-        putExtra("BUSYBOX_URL", busyboxUrl)
-        putExtra("ISO_PATH", file.absolutePath)
+
+    // Fungsi lama tetap saya pertahankan untuk berjaga-jaga
+    fun startBusyBox(path: String, name: String) {
+        val intent = Intent(this, BusyBoxActivity::class.java).apply {
+            putExtra("path", path)
+            putExtra("name", name)
+        }
+        startActivity(intent)
     }
-    startActivity(intent)
 }
