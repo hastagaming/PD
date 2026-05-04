@@ -1,0 +1,8 @@
+#!/bin/sh
+# XStartup configuration for PD GUI
+
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+# Start Desktop Environment (Example: XFCE)
+startxfce4 &
