@@ -14,8 +14,7 @@ class BusyBoxActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        // Dark theme UI to match your terminal style
+
         statusTextView = TextView(this).apply {
             setPadding(50, 50, 50, 50)
             text = "System: ScannerCore engine detected..."
@@ -33,18 +32,17 @@ class BusyBoxActivity : AppCompatActivity() {
     private fun startCoreEngine() {
         try {
             updateStatus("Initializing ScannerCore...")
-            val core = ScannerCore(this)
             
-            // We invoke the core logic here. 
-            // This will handle the binary extraction and setup.
-            core.initializeBinaries()
+            val core = ScannerCore()
+            val isoPath = intent.getStringExtra("ISO_PATH") ?: ""
+            val busyBoxUrl = core.startAutomatedBusyBoxSetup(isoPath)
+            
+            updateStatus("Detected architecture target: $busyBoxUrl")
+            updateStatus("Binaries verified.")
 
-            updateStatus("Core binaries ready.")
+            Thread.sleep(800)
+
             updateStatus("Handing over to TerminalActivity...")
-            
-            Thread.sleep(600)
-
-            // Switch to TerminalActivity to start the interactive session
             val intent = Intent(this, TerminalActivity::class.java)
             startActivity(intent)
             finish()

@@ -9,7 +9,7 @@ import android.util.Log
  * This class scans the binary headers of an ISO/Tarball to 
  * determine the correct BusyBox version without user input.
  */
-class DistroScanner {
+class ScannerCore {
 
     private val TAG = "PD_Scanner"
     private val BUSYBOX_BASE_URL = "https://busybox.net/downloads/binaries/1.21.1/"
