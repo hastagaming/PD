@@ -15,7 +15,7 @@ class SetupActivity : AppCompatActivity() {
     // Fungsi baru untuk memproses ISO yang dipilih Komandan
     private fun processSelectedIso(file: File) {
         // Pastikan class DistroScanner sudah Komandan buat di file terpisah
-        val scanner = DistroScanner() 
+        val scanner = ScannerCore() 
         val busyboxUrl = scanner.getCompatibleBusyBox(file)
 
         // Sistem otomatis memilihkan BusyBox untuk user dan berpindah Activity
